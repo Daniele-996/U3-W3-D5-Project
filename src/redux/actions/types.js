@@ -1,0 +1,3 @@
+export const GET_MUSIC = "GET_MUSIC";
+export const SET_CURRENT_SONG = "SET_CURRENT_SONG";
+export const TOGGLE_FAVORITE = "TOGGLE_FAVORITE";

@@ -1,16 +1,45 @@
-import { useSelector } from "react-redux";
+import { Col, Container, ProgressBar, Row } from "react-bootstrap";
 
 const Player = () => {
-  const currentSong = useSelector((state) => state.player.currentSong);
-
-  if (!currentSong) return <div>Seleziona una canzone per ascoltarla</div>;
-
   return (
-    <div className="player">
-      <img src={currentSong.album.cover_small} alt={currentSong.title} />
-      <div>{currentSong.title}</div>
-      <div>{currentSong.artist.name}</div>
-    </div>
+    <>
+      <Container fluid className="fixed-bottom bg-container pt-1">
+        <Row className="h-100">
+          <Col className="col-lg-10 offset-lg-2">
+            <Row className="h-100 flex-column justify-content-center align-items-center">
+              <Col className="col-6 col-md-4 playerControls">
+                <div className="d-flex">
+                  <a href="#">
+                    <img
+                      src="src\assets\playerbuttons\shuffle.png"
+                      alt="shuffle"
+                    />
+                  </a>
+                  <a href="#">
+                    <img src="src\assets\playerbuttons\prev.png" alt="prev" />
+                  </a>
+                  <a href="#">
+                    <img src="src\assets\playerbuttons\play.png" alt="play" />
+                  </a>
+                  <a href="#">
+                    <img src="src\assets\playerbuttons\next.png" alt="next" />
+                  </a>
+                  <a href="#">
+                    <img
+                      src="src\assets\playerbuttons\repeat.png"
+                      alt="repeat"
+                    />
+                  </a>
+                </div>
+                <div className="progress mt-3">
+                  <ProgressBar role="progressbar"></ProgressBar>
+                </div>
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+      </Container>
+    </>
   );
 };
 

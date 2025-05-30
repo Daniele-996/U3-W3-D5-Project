@@ -1,4 +1,4 @@
-import { SET_CURRENT_SONG } from "../actions/types";
+import { SET_CURRENT_SONG } from "../actions";
 
 const initialState = {
   currentSong: null,

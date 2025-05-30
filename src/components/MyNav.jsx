@@ -1,48 +1,66 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-
 import {
   Button,
+  Container,
   FormControl,
   InputGroup,
   Nav,
   Navbar,
-  Container,
 } from "react-bootstrap";
-import { GET_MUSIC } from "../redux/actions/types";
+import { BookFill, HouseDoorFill } from "react-bootstrap-icons";
 
 const MyNav = () => {
-  const [query, setQuery] = useState("");
-  const dispatch = useDispatch();
-
-  const handleSearch = () => {
-    if (query.trim()) dispatch(GET_MUSIC(query));
-  };
-
   return (
-    <aside className="col col-2">
-      <Navbar expand="md" fixed="left" className="flex-column" id="sidebar">
-        <Container className="flex-column align-items-start">
-          <Navbar.Brand href="#">
-            <img src="src/assets/logo.png" alt="Logo" width="131" height="40" />
-          </Navbar.Brand>
-          <Nav className="flex-column">
-            <Nav.Link href="#">Home</Nav.Link>
-            <Nav.Link href="#">Your Library</Nav.Link>
-          </Nav>
-          <InputGroup className="mt-3">
-            <FormControl
-              placeholder="Search"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && handleSearch()}
-            />
-            <Button onClick={handleSearch}>GO</Button>
-          </InputGroup>
-        </Container>
-      </Navbar>
-    </aside>
+    <>
+      <aside className="col col-2">
+        <Navbar
+          expand="md"
+          fixed="left"
+          className="flex-column justify-content-between"
+          id="sidebar"
+        >
+          <Container className="flex-column align-items-start">
+            <Navbar.Brand href="index.html">
+              <img
+                src="src\assets\logo.png"
+                alt="Spotify Logo"
+                width="131"
+                height="40"
+              />
+            </Navbar.Brand>
+
+            <Navbar.Toggle aria-controls="navbarNavAltMarkup" />
+            <Navbar.Collapse id="navbarNavAltMarkup">
+              <Nav className="flex-column">
+                <Nav.Link href="#" className="d-flex align-items-center">
+                  <HouseDoorFill className="me-2" />
+                  Home
+                </Nav.Link>
+                <Nav.Link href="#" className="d-flex align-items-center">
+                  <BookFill className="me-2" />
+                  Your Library
+                </Nav.Link>
+
+                <InputGroup className="mt-3">
+                  <FormControl placeholder="Search" aria-label="Search" />
+                  <Button variant="outline-secondary" size="sm">
+                    GO
+                  </Button>
+                </InputGroup>
+              </Nav>
+            </Navbar.Collapse>
+          </Container>
+
+          <div className="nav-btn d-flex flex-column align-items-start px-3 pb-3">
+            <Button className="login-btn">Sign Up</Button>
+            <Button className="login-btn">Login</Button>
+            <div>
+              <a href="#">Cookie Policy</a> | <a href="#">Privacy</a>
+            </div>
+          </div>
+        </Navbar>
+      </aside>
+    </>
   );
 };
-
 export default MyNav;

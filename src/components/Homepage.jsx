@@ -1,32 +1,24 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchMusic } from "../redux/actions/musicActions";
-import { setCurrentSong } from "./redux/actions/playerActions";
-import { toggleFavorite } from "./redux/actions/favoritesActions";
+import { Col, Container, Row } from "react-bootstrap";
+import RowResults from "./RowResults";
 
 const Homepage = () => {
-  const dispatch = useDispatch();
-  const songs = useSelector((state) => state.music.results);
-  const favorites = useSelector((state) => state.favorites.favorites);
-
-  useEffect(() => {
-    dispatch(fetchMusic("eminem"));
-  }, [dispatch]);
-
   return (
-    <div>
-      {songs.map((song) => (
-        <div key={song.id}>
-          <span onClick={() => dispatch(setCurrentSong(song))}>
-            {song.title}
-          </span>
-          <button onClick={() => dispatch(toggleFavorite(song.id))}>
-            {favorites.includes(song.id) ? "❤️" : "♡"}
-          </button>
-        </div>
-      ))}
-    </div>
+    <>
+      <Container className="col-12 col-md-9 offset-md-3 mainPage">
+        <Row className="row">
+          <Col className="col-9 col-lg-11 mainLinks d-md-flex">
+            <a href="#">TRENDING</a>
+            <a href="#">PODCAST</a>
+            <a href="#">MOODS AND GENRES</a>
+            <a href="#">NEW RELEASES</a>
+            <a href="#">DISCOVER</a>
+          </Col>
+        </Row>
+        <RowResults query={"Rihanna"} />
+        <RowResults query={"Madonna"} />
+        <RowResults query={"Bruno Mars"} />
+      </Container>
+    </>
   );
 };
-
 export default Homepage;

@@ -1,4 +1,4 @@
-import { TOGGLE_FAVORITE } from "../actions/types";
+import { TOGGLE_FAVORITE } from "../actions";
 
 const initialState = {
   favorites: [],

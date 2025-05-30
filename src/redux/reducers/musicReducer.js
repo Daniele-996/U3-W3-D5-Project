@@ -1,4 +1,4 @@
-import { GET_MUSIC } from "../actions/types";
+import { GET_MUSIC } from "../actions";
 
 const initialState = {
   results: [],
